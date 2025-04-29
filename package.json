@@ -1,0 +1,16 @@
+{
+  "name": "ordering-website",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "concurrently": "^9.1.2",
+    "express": "^5.1.0",
+    "mongoose": "^8.14.0",
+    "next": "^13.4.4"  
+  },
+  "scripts": {
+    "dev": "concurrently \"next dev\" \"node server.js\"",
+    "build": "next build",
+    "start": "next start"
+  }
+}
