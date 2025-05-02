@@ -5,7 +5,7 @@ const cors = require('cors');
 const app = express();
 const port = 5000;
 
-const uri = 'mongodb+srv://PavanSamarth99:DogPavan%4007@cluster0.nzjzcb2.mongodb.net/?retryWrites=true&w=majority';
+const uri = 'mongodb+srv://PavanSamarth99:DogPavan%4007@cluster0.nzjzcb2.mongodb.net/?retryWrites=true&w=majority&ssl=true';
 const client = new MongoClient(uri);
 let collection;
 let cartCollection;
