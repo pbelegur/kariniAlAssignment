@@ -118,15 +118,15 @@ app.post('/api/search', async (req, res) => {
 // Connect to MongoDB and start server
 async function main() {
   try {
-    await client.connect();
-    const db = client.db('inventory_db');
-    collection = db.collection('shopping');
-    cartCollection = db.collection('cart');
+    await client.connect(); // creting the conncetion usign the URI given above with USERNAME and password
+    const db = client.db('inventory_db'); // accessing to the actual DB
+    collection = db.collection('shopping'); // accesing the whole array of the collections(all objects)
+    cartCollection = db.collection('cart'); // // accessing cart collection.
     app.listen(port, () => {
-      console.log(`✅ Server running at http://localhost:${port}`);
+      console.log(`Server running at http://localhost:${port}`);
     });
   } catch (err) {
-    console.error("❌ Failed to connect to DB", err);
+    console.error("Failed to connect to DB", err);
   }
 }
 
