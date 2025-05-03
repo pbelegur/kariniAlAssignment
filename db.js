@@ -12,9 +12,10 @@ let cartCollection;
 app.use(cors({
   origin: '*'
 }));
-app.use(express.json()); // 👈 MUST be before routes
+app.use(express.json()); 
 
 // Set up routes early
+// to clear cart for intial load of the website
 app.delete('/api/clearCart', async (req, res) => {
   try {
     // Delete ALL documents in the cart collection
@@ -29,6 +30,7 @@ app.delete('/api/clearCart', async (req, res) => {
     res.status(500).json({ error: 'Failed to clear cart' });
   }
 });
+// to show all data on the main page
 app.get('/api/data', async (req, res) => {
   try {
     const data = await collection.find({}).toArray();
@@ -39,6 +41,7 @@ app.get('/api/data', async (req, res) => {
   }
 });
 // Set up routes early
+// to show all that is there in the cart
 app.get('/api/cart', async (req, res) => {
   try {
     const data = await cartCollection.find({}).toArray();
@@ -48,6 +51,7 @@ app.get('/api/cart', async (req, res) => {
     res.status(500).json({ error: 'Failed to fetch data' });
   }
 });
+// to add item into the cart
 app.post('/api/cart', async (req, res) => {
   try {
     // Validate the incoming data
@@ -64,6 +68,7 @@ app.post('/api/cart', async (req, res) => {
     res.status(500).json({ error: 'Failed to add item to cart' });
   }
 });
+// to delete 1 item at a time from the cart.
 app.delete('/api/cart', async (req, res) => {
   try {
     // Validate the incoming data
@@ -87,15 +92,7 @@ app.delete('/api/cart', async (req, res) => {
     res.status(500).json({ error: 'Failed to remove item from cart' });
   }
 });
-// app.post('/api/data', async (req, res) => {
-//   try {
-//     const newItem = new YourModel(req.body);
-//     const savedItem = await newItem.save();
-//     res.status(201).json(savedItem);
-//   } catch (error) {
-//     res.status(400).json({ message: error.message });
-//   }
-// });
+// to search in the main SKU bar
 app.post('/api/search', async (req, res) => {
   const { searchTerm } = req.body; // expect { searchTerm: "..." }
 
