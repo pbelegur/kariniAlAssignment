@@ -87,15 +87,15 @@ app.delete('/api/cart', async (req, res) => {
     res.status(500).json({ error: 'Failed to remove item from cart' });
   }
 });
-app.post('/api/data', async (req, res) => {
-  try {
-    const newItem = new YourModel(req.body);
-    const savedItem = await newItem.save();
-    res.status(201).json(savedItem);
-  } catch (error) {
-    res.status(400).json({ message: error.message });
-  }
-});
+// app.post('/api/data', async (req, res) => {
+//   try {
+//     const newItem = new YourModel(req.body);
+//     const savedItem = await newItem.save();
+//     res.status(201).json(savedItem);
+//   } catch (error) {
+//     res.status(400).json({ message: error.message });
+//   }
+// });
 app.post('/api/search', async (req, res) => {
   const { searchTerm } = req.body; // expect { searchTerm: "..." }
 
